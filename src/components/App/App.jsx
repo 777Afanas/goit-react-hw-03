@@ -1,9 +1,9 @@
-import { useState } from 'react'
-// import reactLogo from '../assets/react.svg'
-// import viteLogo from '/vite.svg'
-import './App.css'
+import css from './App.module.css';
+import { useState } from 'react';
+import ContactList from '../ContactList/ContactList';
 
-const userContacts =
+
+const initialContacts =
     [
         { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
         { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
@@ -11,12 +11,19 @@ const userContacts =
         { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ];
 
-export default function App() {
-    <div>
-        <h1>Phonebook</h1>
+export default function App() { 
 
+   
+    const [contacts, setContacts] = useState(initialContacts);
+
+    setContacts();
+
+return (
+    <div className={css.container}>
+        <h1>Phonebook</h1>
+        <ContactList userContacts={contacts} />
     </div>
-    
+    );
 }
 
 
