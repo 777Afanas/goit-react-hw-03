@@ -1,5 +1,6 @@
 import css from './App.module.css';
 import { useState } from 'react';
+import SearchBox from '../SearchBox/SearchBox';
 import ContactList from '../ContactList/ContactList';
 
 
@@ -13,15 +14,17 @@ const initialContacts =
 
 export default function App() { 
 
-   
+    const [search, setSearch] = useState("");
     const [contacts, setContacts] = useState(initialContacts);
 
-    setContacts();
+    const visibleContacts = contacts.filter((contact) =>
+        contact.name.toLowerCase().includes(search.toLowerCase()));
 
 return (
     <div className={css.container}>
         <h1>Phonebook</h1>
-        <ContactList userContacts={contacts} />
+        <SearchBox value={search} onInput={setSearch} />
+        <ContactList userContacts={visibleContacts} />
     </div>
     );
 }
