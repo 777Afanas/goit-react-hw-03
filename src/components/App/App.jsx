@@ -1,5 +1,6 @@
 import css from './App.module.css';
 import { useState } from 'react';
+import ContactForm from '../ContactForm/ContactForm';
 import SearchBox from '../SearchBox/SearchBox';
 import ContactList from '../ContactList/ContactList';
 
@@ -23,6 +24,7 @@ export default function App() {
 return (
     <div className={css.container}>
         <h1>Phonebook</h1>
+        <ContactForm/>
         <SearchBox value={search} onInput={setSearch} />
         <ContactList userContacts={visibleContacts} />
     </div>
