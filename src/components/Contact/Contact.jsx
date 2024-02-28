@@ -2,7 +2,7 @@ import css from './Contact.module.css';
 import { FaUser, FaPhone } from 'react-icons/fa6';
 
 
-export default function Contact({ data: {name, number, id}, onDelete}) {
+export default function Contact({ data: {id, name, number }, onDelete}) {
     return (
         <div className={css.contactItem}>
             <div className={css.info}>

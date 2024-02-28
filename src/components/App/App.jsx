@@ -15,10 +15,20 @@ const initialContacts = [
 export default function App() {
   const [search, setSearch] = useState("");
 
-  const [contacts, setContacts] = useState(initialContacts);
+  // const [contacts, setContacts] = useState(initialContacts);
+
+ const [contacts, setContacts] = useState (() => {
+    const savedValues = window.localStorage.getItem('contacts');
+   if (savedValues !== null) {
+     return JSON.parse(savedValues);
+   } else { return initialContacts }
+  });
+
+
+
 
   useEffect(() => {
-    window.localStorage.setItem("contacts", JSON.stringify(contacts));
+    window.localStorage.setItem("saved-contacts", JSON.stringify(contacts));
   }, [contacts]);
 
   const addContact = (newContact) => {

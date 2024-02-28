@@ -16,7 +16,7 @@ const FeedbackSchema = Yup.object().shape({
 });
 
 const initialValues = {
-  id: "",
+  // id: "",
   name: "",
   number: "",
 };
@@ -25,10 +25,12 @@ export default function ContactForm({ onAdd }) {
   const nameFieldId = useId();
   const numberFieldId = useId();
 
-  const handleSubmit = (value, actions) => {
+  const handleSubmit = (values, actions) => {
     onAdd({
       id: nanoid(),      
-      ...value,
+      name: values.name,
+      number: values.number
+      // ...value,
     });
     actions.resetForm();
   };
