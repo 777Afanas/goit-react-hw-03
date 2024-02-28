@@ -1,8 +1,9 @@
-import css from "./App.module.css";
+import "../../../node_modules/modern-normalize/modern-normalize.css";
 import { useEffect, useState } from "react";
 import ContactForm from "../ContactForm/ContactForm";
 import SearchBox from "../SearchBox/SearchBox";
 import ContactList from "../ContactList/ContactList";
+import css from "./App.module.css";
 
 const initialContacts = [
   { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },

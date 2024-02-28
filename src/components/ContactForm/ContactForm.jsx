@@ -52,7 +52,7 @@ export default function ContactForm({ onAdd }) {
           />
           <ErrorMessage className={css.error} name="name" as="span" />
         </div>
-        <div className={css.form}>
+        <div className={css.box}>
           <label className={css.label} htmlFor={numberFieldId}>
             Number
           </label>

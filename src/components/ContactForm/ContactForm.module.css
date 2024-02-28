@@ -1,5 +1,5 @@
 .form {
-    width: 500px;
+    width: 480px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,6 +32,11 @@
     outline-color: #535bf2;
 }
 
+.label {
+    font-weight: 500;
+    color: #212121;
+}
+
 .button {
     width: 200px;
     font-family: inherit;
@@ -43,10 +48,7 @@
     cursor: pointer;
 }
 
-.label {
-    font-weight: 500;
-    color: #212121;
-}
+
 
 .error {
     font-weight: 500;
