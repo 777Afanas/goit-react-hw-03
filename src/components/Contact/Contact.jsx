@@ -17,9 +17,8 @@ export default function Contact({ data: {name, number, id}, onDelete}) {
             </div>
             <button
                 className={css.button}
-                onClick={() => {
-                    onDelete(id);
-            }}>
+                onClick={() => 
+                    onDelete(id)}>
                 Delete
             </button> 
         </div>

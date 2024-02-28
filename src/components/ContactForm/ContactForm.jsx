@@ -1,56 +1,74 @@
-import css from './ContactForm.module.css';
-import { useId } from 'react';
-import { Formik, Form, Field } from 'formik';
+import css from "./ContactForm.module.css";
+import { useId } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { nanoid } from "nanoid";
 
-export default function ContactForm() {
+const FeedbackSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(3, "Too Shart!")
+    .max(50, "Too Long!")
+    .required("Reuired"),
+  number: Yup.string()
+    .min(3, "Too Shart!")
+    .max(50, "Too Long!")
+    .required("Reuired"),
+});
 
-    const nameFieldId = useId();
-    const numberField = useId();
+const initialValues = {
+  id: "",
+  name: "",
+  number: "",
+};
 
-    const handleSubmit = (values, actions) => {
-        actions.resetForm();
-    }
+export default function ContactForm({ onAdd }) {
+  const nameFieldId = useId();
+  const numberFieldId = useId();
 
+  const handleSubmit = (value, actions) => {
+    onAdd({
+      id: nanoid(),      
+      ...value,
+    });
+    actions.resetForm();
+  };
 
-    return (
-        <Formik
-            initialValues={{
-            id: "",
-            name: "",
-            number: "", 
-        }}
-            onSubmit={handleSubmit}>
-            <Form className={css.form}>
-                <div className={css.box}>
-                    <label className={css.label} htmlFor={nameFieldId}>
-                        Name
-                    </label>
-                    <Field
-                        className={css.field}
-                        type="text"
-                        name="name"
-                        id={nameFieldId}
-                    />
-                </div>
-                <div className={css.form}>
-                    <label className={css.label} htmlFor={numberField}>
-                        Number
-                    </label>
-                    <Field
-                        className={css.field}
-                        type="text"
-                        name="number"
-                        id={numberField}
-                    />
-                </div>
-                         
+  return (
+    <Formik
+      initialValues={initialValues}
+      onSubmit={handleSubmit}
+      validationSchema={FeedbackSchema}
+    >
+      <Form className={css.form}>
+        <div className={css.box}>
+          <label className={css.label} htmlFor={nameFieldId}>
+            Name
+          </label>
+          <Field
+            className={css.field}
+            type="text"
+            name="name"
+            id={nameFieldId}
+          />
+          <ErrorMessage className={css.error} name="name" as="span" />
+        </div>
+        <div className={css.form}>
+          <label className={css.label} htmlFor={numberFieldId}>
+            Number
+          </label>
+          <Field
+            className={css.field}
+            type="text"
+            name="number"
+            id={numberFieldId}
+          />
+          <ErrorMessage className={css.error} name="number" as="span" />
+        </div>
 
-                <button className={css.button} type="submit">
-                    Add contact
-                </button>
-            </Form>
-        </Formik>
-        
-    );
-    
+        <button className={css.button} type="submit">
+          Add contact
+        </button>
+      </Form>
+    </Formik>
+  );
 }
