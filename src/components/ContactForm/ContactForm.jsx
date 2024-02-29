@@ -27,10 +27,9 @@ export default function ContactForm({ onAdd }) {
 
   const handleSubmit = (values, actions) => {
     onAdd({
-      id: nanoid(),      
+      id: nanoid(),
       name: values.name,
-      number: values.number
-      // ...value,
+      number: values.number,
     });
     actions.resetForm();
   };

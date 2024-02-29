@@ -1,9 +1,9 @@
 import css from "./SearchBox.module.css";
 
-export default function SearchBox({value, onSerch}) {
+export default function SearchBox({value, onSearch}) {
 
   const handelInput = (evt) => {
-    onSerch(evt.target.value);
+    onSearch(evt.target.value);
   };
 
   return (

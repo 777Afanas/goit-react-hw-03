@@ -28,7 +28,7 @@ export default function App() {
 
 
   useEffect(() => {
-    window.localStorage.setItem("saved-contacts", JSON.stringify(contacts));
+    window.localStorage.setItem("contacts", JSON.stringify(contacts));
   }, [contacts]);
 
   const addContact = (newContact) => {
@@ -51,7 +51,7 @@ export default function App() {
     <div className={css.container}>
       <h1>Phonebook</h1>
       <ContactForm onAdd={addContact} />
-      <SearchBox value={search} onSerch={setSearch} />
+      <SearchBox value={search} onSearch={setSearch} />
       <ContactList userContacts={visibleContacts} onDelete={deleteContact} />
     </div>
   );
